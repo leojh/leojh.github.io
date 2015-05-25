@@ -3,10 +3,14 @@ layout: post
 title: jQuery Ajax API retry mechanism with promises
 date: '2014-08-16T15:10:00.000-07:00'
 author: Leo Hernandez
-tags: 
+tags:
 modified_time: '2014-08-18T10:27:22.539-07:00'
 blogger_id: tag:blogger.com,1999:blog-3785659521516138827.post-1572666291512017481
 blogger_orig_url: http://www.leojh.com/2014/08/jquery-ajax-api-retry-mechanism-with.html
+redirect_from:
+  - /2014/08/jquery-ajax-api-retry-mechanism-with.html
+  - /2014/08/16/jquery-ajax-api-retry-mechanism-with.html
+
 ---
 
 This post depicts a simple mechanism for retrying Ajax requests in the event of a failure. The purpose is to give the service "class" a function that wraps a jQuery Ajax call and the number of times the request should be tried. The whole premise works off of jQuery Deferred Objects and Promises. When the service is first called, a general deferred object is created. This object succeeds on the first successful try and fails when the number of failures hit the maximum failures allowed. Additionally, a call back function can be provided which is executed on every single try.  The use of deferred objects also simplifies the code required, since the success/failure paths will be similar to making regular Ajax calls, which are inherently deferred objects in jQuery.<br />&nbsp;  <iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/LeoJH/vabudj37/embedded/result,js,html,css,resources" width="100%"></iframe>

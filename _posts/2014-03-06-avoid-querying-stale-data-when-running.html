@@ -3,10 +3,13 @@ layout: post
 title: Avoid querying stale data when running integration tests against the database
 date: '2014-03-06T19:46:00.004-08:00'
 author: Leo Hernandez
-tags: 
+tags:
 modified_time: '2014-03-06T20:06:53.285-08:00'
 blogger_id: tag:blogger.com,1999:blog-3785659521516138827.post-2482463149882331553
 blogger_orig_url: http://www.leojh.com/2014/03/avoid-querying-stale-data-when-running.html
+redirect_from:
+  - /2014/03/avoid-querying-stale-data-when-running.html
+  - /2014/03/07/avoid-querying-stale-data-when-running.html
 ---
 
 A common pitfall in doing persistence tests occurs when entities are loaded into memory, persisted, then immediately queried back from the repository.<br />The default behavior of ORMs is to load the entity from the in-memory cache to spare a query to the database.<br />This behavior is fine overall but does not fully test the persistence of the entity. Therefore, it's important to evict the entity from the cache in order to force the ORM to re-load the entity from the db. This is the case for ORMs in either Java or .Net environments.<br /><br />In Spring, if you have properly configured the JPA, you evict entities from the cache by doing the following:<br /><br /><span style="background-color: white;"><span style="color: #222222; font-family: arial, sans-serif;">((Session)entityManager.<wbr></wbr>getDelegate()).evict(entity);</span></span><br /><span style="background-color: white; color: #222222; font-family: arial, sans-serif;"><br /></span><span style="background-color: white; color: #222222; font-family: arial, sans-serif;">You can access the entityManager by getting it from the container as follows:</span><br /><br /><div style="background-color: white; color: #222222; font-family: arial, sans-serif;">@PersistenceContext<br />private EntityManager entityManager;</div><div style="background-color: white; color: #222222; font-family: arial, sans-serif;"><br /></div><div style="background-color: white; color: #222222; font-family: arial, sans-serif;">Below you may find a simple, yet complete example of a persistence integration test with this technique applied:</div><div style="background-color: white; color: #222222; font-family: arial, sans-serif;"><br /></div><script src="https://gist.github.com/LeoJH/9404871.js"></script>

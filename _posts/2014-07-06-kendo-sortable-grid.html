@@ -3,10 +3,13 @@ layout: post
 title: Kendo Grid - Drag and Drop to Sort
 date: '2014-07-06T11:03:00.000-07:00'
 author: Leo Hernandez
-tags: 
+tags:
 modified_time: '2014-07-06T11:22:19.411-07:00'
 blogger_id: tag:blogger.com,1999:blog-3785659521516138827.post-2268568294292560265
 blogger_orig_url: http://www.leojh.com/2014/07/kendo-sortable-grid.html
+redirect_from:
+  - /2014/07/kendo-sortable-grid.html
+  - /2014/07/06/kendo-sortable-grid.html
 ---
 
 Example of how to use both the Kendo Grid and Sortable component of the JavaScript web library by Telerik, making a sortable grid that is also groupable by category.<br /><br />In this sample, records can be rearranged only within their own group.<br /><br />In a real scenario, this will be wired against a service that will update the ordinal values of records changed in the persistence layer. One advantage that we get if we use Kendo's built in Observable mechanism, is that only records affected by the rearranging will be sent back to the server for processing. For instance, if we consider having an ordered set of ten records, and we rearrange the last two, only those two will be sent across the wire.<br /><br /><br /><iframe width="100%" height="300" src="http://jsfiddle.net/LeoJH/PSR3Z/embedded/result,js,html,css,resources" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
