@@ -1,6 +1,6 @@
 # Site settings
 title: Arts & Crafts in Software
-email: leo@leojh.com
+email: 
 description: > # this means to ignore newlines until "baseurl:"
   Personal blog on my musings about everything software.
 baseurl: "" # the subpath of your site, e.g. /blog/
