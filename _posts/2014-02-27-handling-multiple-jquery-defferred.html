@@ -1,0 +1,12 @@
+---
+layout: post
+title: Handling multiple jQuery Deferred calls regardless of resolution
+date: '2014-02-27T19:18:00.003-08:00'
+author: Leo Hernandez
+tags: 
+modified_time: '2014-02-27T19:23:57.616-08:00'
+blogger_id: tag:blogger.com,1999:blog-3785659521516138827.post-6763585926858953384
+blogger_orig_url: http://www.leojh.com/2014/02/handling-multiple-jquery-defferred.html
+---
+
+This post discusses a mechanism jQuery.whenAll() for making multiple Ajax calls (or really, any jQuery Deferred calls, since that is what the Ajax object is, and getting a resolution for all calls.<br /><br />This is an alternative to jQuery's built-in Deferred.when(), which short-circuits on rejected resolutions (for example, jQuery Ajax failures resulting from a 400 or 500 level HTTP status) and will not give you subsequent responses.<br /><br />So, for example a call such as:  jQuery.when(jQuery.get('resource/404', 'resource/200')) will not give you a resolution for both requests, only the resolution of the rejected request (the 404 one).<br /><br />Therefore, a mechanism like jQuery.whenAll() is very useful for situations when you may want the resolution to all of the requests.<br /><br />The fiddle:  <iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/LeoJH/VMQ3F/embedded/" width="100%"></iframe>
